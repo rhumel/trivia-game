@@ -9,3 +9,23 @@ body {
     
     background-image: url("../images/blueLizzard.jpg");
 }
+
+.container {
+margin-left: 10px;
+
+}
+
+h1 {
+font-family: "Permanent Marker", cursive;
+font-size: 80px;
+}
+
+#triviaPanel {
+    Height: 80%;
+    Width: 50%;
+    float: left; 
+    margin-top: 125px;
+    display:none;
+
+
+}
