@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,34 +13,57 @@
 
 
 </head>
+
 <body>
 
 
-        <div class="container">
-            <h1>Animal Trivia Game</h1>
-
-            <div class="container" id="triviaPanel">
-                    <button type="button" class="btn btn-outline-info btn-lg btn-block align-items-center">Start</button>
-                <div class="row">
+    <div class="container">
+        <h1>Animal Trivia Game</h1>
 
 
-                </div>    
+        <!-- Set up the start button, and display -->
+        <div class="container" id="triviaPanel">
+            <button type="button" id="startBtn" class="btn btn-outline-info btn-lg btn-block align-items-center">Start</button>
 
 
-
-
+            <!--Create question card.  Starts off with Display:none  -->
+            <div class="row">
+                <div class="card col-md-12">
+                    <!--Timer Heading -->
+                    <h2 class="card-header" id="timeHeader">
+                        Time Remaining
+                    </h2> 
+                    <!-- Question content -->
+                    <div class="card-body">
+                        <h5 class="card-header" id="questionCard">Special title treatment</h5>
+                        <div id=btnGroup>
+                            <button type="button" id="btnA" class="btn btn-outline-info btn-lg btn-block align-items-center">A</button>
+                            <button type="button" id="btnB" class="btn btn-outline-info btn-lg btn-block align-items-center">B</button>
+                            <button type="button" id="btnC" class="btn btn-outline-info btn-lg btn-block align-items-center">C</button>
+                            <button type="button" id="btnD" class="btn btn-outline-info btn-lg btn-block align-items-center">D</button>
+                        </div>    
+                        
+                    </div>
+                </div>
 
             </div>
 
 
 
 
-
-            </div>
 
         </div>
 
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="./assets/javascript/game.js"></script>
+
+
+
+
+    </div>
+
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/javascript/game.js"></script>
 </body>
+
 </html>
