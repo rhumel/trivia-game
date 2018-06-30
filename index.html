@@ -23,16 +23,17 @@
 
         <!-- Set up the start button, and display -->
         <div class="container" id="triviaPanel">
-            <button type="button" id="startBtn" class="btn btn-outline-info btn-lg btn-block align-items-center">Start</button>
+            <button type="button" id="startBtn" class="btn btn-outline-info btn-lg btn-block align-items-center hide">Start</button>
 
 
             <!--Create question card.  Starts off with Display:none  -->
             <div class="row">
+                <!--place hide here -->
                 <div class="card col-md-12">
                     <!--Timer Heading -->
                     <h2 class="card-header" id="timeHeader">
                         Time Remaining
-                    </h2> 
+                    </h2>
                     <!-- Question content -->
                     <div class="card-body">
                         <h5 class="card-header" id="questionCard">Special title treatment</h5>
@@ -41,24 +42,31 @@
                             <button type="button" id="btnB" class="btn btn-outline-info btn-lg btn-block align-items-center">B</button>
                             <button type="button" id="btnC" class="btn btn-outline-info btn-lg btn-block align-items-center">C</button>
                             <button type="button" id="btnD" class="btn btn-outline-info btn-lg btn-block align-items-center">D</button>
-                        </div>    
-                        <div class="card col-md-10" id="answerCard"></div>  <!--style="width: 18rem;"> -->
-                                <div class="card-body">
-                                  <p class="card-text">Triva answer Line</p>
-                                  <img class="card-img-bottom" src="./assets/images/lizzard bkgnd.jpg" alt="Card image cap">
-                                </div>
-                              </div>
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row hide">
+                <div class="card-body">
+                    <div class="card col-md-12" id="answerCard">
+                    <!--style="width: 18rem;"> -->
+                      <div class="card-body">
+                        <p class="card-text">Triva answer Line</p>
+                        <img class="card-img-bottom" src="./assets/images/lizzard bkgnd.jpg" alt="Card image cap">
+                      </div>
                     </div>
                 </div>
 
             </div>
-
-
-
-
-
         </div>
+
+
+
+
+
+
+
+    </div>
 
 
 

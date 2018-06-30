@@ -28,16 +28,17 @@ font-size: 80px;
 
 }
 
-#startBtn {
-    display: none;
+.show { 
+    display: initial;
 }
 
-#btnGroup{
+.hide {
     display: none;
 
 }
 
 .card-body{
 
-    padding: 5px;
+    padding: 20px;
+    margin-top: 20px;
 }
