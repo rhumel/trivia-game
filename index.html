@@ -23,37 +23,37 @@
 
         <!-- Set up the start button, and display -->
         <div class="container" id="triviaPanel">
-            <button type="button" id="startBtn" class="btn btn-outline-info btn-lg btn-block align-items-center hide">Start</button>
+            <button type="button" id="startBtn" class="btn btn-outline-info btn-lg btn-block align-items-center show">Start</button>
 
 
             <!--Create question card.  Starts off with Display:none  -->
-            <div class="row">
+            <div class="row hide" id="questionPage">
                 <!--place hide here -->
                 <div class="card col-md-12">
                     <!--Timer Heading -->
                     <h2 class="card-header" id="timeHeader">
-                        Time Remaining
                     </h2>
                     <!-- Question content -->
                     <div class="card-body">
                         <h5 class="card-header" id="questionCard">Special title treatment</h5>
                         <div id=btnGroup>
-                            <button type="button" id="btnA" class="btn btn-outline-info btn-lg btn-block align-items-center">A</button>
-                            <button type="button" id="btnB" class="btn btn-outline-info btn-lg btn-block align-items-center">B</button>
-                            <button type="button" id="btnC" class="btn btn-outline-info btn-lg btn-block align-items-center">C</button>
-                            <button type="button" id="btnD" class="btn btn-outline-info btn-lg btn-block align-items-center">D</button>
+                            <button type="button" id="btnA" value= "A" class="btn btn-outline-info btn-lg btn-block align-items-center answer">A</button>
+                            <button type="button" id="btnB" value= "B" class="btn btn-outline-info btn-lg btn-block align-items-center answer">B</button>
+                            <button type="button" id="btnC" value = "C" class="btn btn-outline-info btn-lg btn-block align-items-center answer">C</button>
+                            <button type="button" id="btnD" value = "D" class="btn btn-outline-info btn-lg btn-block align-items-center answer">D</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row hide">
+            <div class="row hide" id="answerCard">
                 <div class="card-body">
-                    <div class="card col-md-12" id="answerCard">
+                    <div class="card col-md-12">
                     <!--style="width: 18rem;"> -->
                       <div class="card-body">
-                        <p class="card-text">Triva answer Line</p>
-                        <img class="card-img-bottom" src="./assets/images/lizzard bkgnd.jpg" alt="Card image cap">
-                      </div>
+                        <p class="card-text" id="answerText"></p>
+                        <img class="card-img-bottom" id="animalPic" src="./assets/images/lizzard bkgnd.jpg" alt="Card image cap">
+                        <button type="button" id="nextBtn" class="btn btn-outline-info btn-lg btn-block align-items-center">Next Question</button> 
+                    </div>
                     </div>
                 </div>
 
@@ -80,4 +80,4 @@
     <script src="./assets/javascript/game.js"></script>
 </body>
 
-</html>
+</html> 

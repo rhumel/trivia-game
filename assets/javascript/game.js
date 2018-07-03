@@ -1,21 +1,24 @@
 $(document).ready(function () {
 
-var correct =0;
-var wrong = 0;
+var correctTotal =0;
+var wrongTotal = 0;
 var intervalId;
 var clockRunning = false;
+var countDownTimer = 30;
+var numQuestions= -1;
+console.log(countDownTimer + "declare number of secs");
 var triviaQuest = [{ 
       question: "What is the scientific name for the trunk of an elephant?",
-      A: "snufflelupagus",
+      A: "Snufflelupagus",
       B: "Probosis",
-      C: "luggage",
-      D: "snoutus",
+      C: "Luggage",
+      D: "Snoutus",
       correct: "B",
       questImage: "./assets/images/elephant.jpg",
 },{
       question: "Which ape gets its name from the Maly word meaning",
       A: "Gorilla",
-      B: "Chimpanzee",
+      B: "Chimpanzee",  
       C: "Orangutan",
       D: "Howler",
       correct: "C",
@@ -84,15 +87,133 @@ var triviaQuest = [{
     D: "Cheetah",
     correct: "B",
     questImage: "./assets/images/rabbit.jpg",
-},{
-    }]
+ }]
 
 
-// 
+//Start Game
+$("#startBtn").on("click",showQuestions);
+
+$(".answer").on("click",pickAnswer);
+
+
+function pickAnswer() {
+    console.log($(this).val())
+    console.log(triviaQuest[numQuestions].correct)
+    if ($(this).val() === triviaQuest[numQuestions].correct){
+
+        console.log("win")
+        win();
+    } else {
+        console.log("lose")
+        lose();
+    }
+
+
+    }
+
+
+function showQuestions() {
+    
+    numQuestions++
+    countDownTimer = 30;
+    
+    
+         $("#startBtn").removeClass("show").addClass("hide");
+        $("#questionPage").removeClass("hide").addClass("show");
+        $("#questionCard").html(triviaQuest[numQuestions].question);
+        $("#answerCard").removeClass("show").addClass("hide");       
+        $("#btnA").html(triviaQuest[numQuestions].A);
+        $("#btnB").html(triviaQuest[numQuestions].B);
+        $("#btnC").html(triviaQuest[numQuestions].C);
+        $("#btnD").html(triviaQuest[numQuestions].D);
+
+      console.log("start timer");
+      startTimer();
+   // }
+}
+
+function showAnswer (message) {
+    //remove question page
+    $("#questionPage").removeClass("show").addClass("hide");
+    
+    //Show the Answer page
+    $("#answerCard").removeClass("hide").addClass("show");
+    
+    //display the answer
+    $("#answerText").html(message + " The Answer is: " + triviaQuest[numQuestions].correct);
+
+    //display the pic
+    $("#animalPic").attr("src",triviaQuest[numQuestions].questImage);
+
+    // if (numQuestions===triviaQuest.length){
+        //show totals page
+
+    // } else {
+    $("#nextBtn").on("click",showQuestions);
+
+    // }
+}
 
 
 
 
 
+
+//start the timer for each question
+function startTimer () {
+    clearInterval(intervalId);
+    console.log(countDownTimer + "just started timer");
+    intervalId = setInterval(countDown,1000);
+ 
+};
+
+//countDown reduced by 1. if out of time show the answer page
+function countDown () {
+   console.log(countDownTimer + "this is how many seconds on the timer to start");
+
+    if (countDownTimer === 0) {
+        //increase wrong answer tally
+       lose();
+     
+    }else {
+        countDownTimer--;
+        console.log(countDownTimer + "this is about to be reduced")
+        $("#timeHeader").html("Time Remaining: " + countDownTimer);
+        
+    }
+
+};
+
+function lose () {
+
+    wrongTotal++;
+      
+    //reset timer
+    clearInterval(intervalId);
+    showAnswer("Incorrect");
+}
+
+function win () {
+
+    correctTotal++;
+    clearInterval(intervalId);
+    showAnswer("Correct");
+
+}
 
 });
+
+// var timeLeft = 30;
+// var elem = document.getElementById('some_div');
+
+// var timerId = setInterval(countdown, 1000);
+
+// function countdown() {
+//   if (timeLeft == 0) {
+//     clearTimeout(timerId);
+//     doSomething();
+//   } else {
+//     elem.innerHTML = timeLeft + ' seconds remaining';
+//     timeLeft--;
+//   }
+// }
