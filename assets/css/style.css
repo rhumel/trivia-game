@@ -28,6 +28,11 @@ font-size: 80px;
 
 }
 
+#startBtn {
+
+        margin-top: 200px;
+}
+
 .show { 
     display: initial;
 }
@@ -41,4 +46,8 @@ font-size: 80px;
 
     padding: 20px;
     margin-top: 20px;
+}
+
+#answerText {
+    font-size: 24px;
 }

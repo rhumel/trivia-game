@@ -22,7 +22,7 @@
 
 
         <!-- Set up the start button, and display -->
-        <div class="container" id="triviaPanel">
+        <div class="container" id="triviaPanel">  
             <button type="button" id="startBtn" class="btn btn-outline-info btn-lg btn-block align-items-center show">Start</button>
 
 
@@ -39,8 +39,8 @@
                         <div id=btnGroup>
                             <button type="button" id="btnA" value= "A" class="btn btn-outline-info btn-lg btn-block align-items-center answer">A</button>
                             <button type="button" id="btnB" value= "B" class="btn btn-outline-info btn-lg btn-block align-items-center answer">B</button>
-                            <button type="button" id="btnC" value = "C" class="btn btn-outline-info btn-lg btn-block align-items-center answer">C</button>
-                            <button type="button" id="btnD" value = "D" class="btn btn-outline-info btn-lg btn-block align-items-center answer">D</button>
+                            <button type="button" id="btnC" value ="C" class="btn btn-outline-info btn-lg btn-block align-items-center answer">C</button>
+                            <button type="button" id="btnD" value ="D" class="btn btn-outline-info btn-lg btn-block align-items-center answer">D</button>
                         </div>
                     </div>
                 </div>
@@ -53,6 +53,22 @@
                         <p class="card-text" id="answerText"></p>
                         <img class="card-img-bottom" id="animalPic" src="./assets/images/lizzard bkgnd.jpg" alt="Card image cap">
                         <button type="button" id="nextBtn" class="btn btn-outline-info btn-lg btn-block align-items-center">Next Question</button> 
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row hide" id="totalCard">
+                <div class="card-body">
+                    <div class="card col-md-12">
+                        <div class="card-body">
+                        <h3 class="card-header" id="TotalHeader">And the reesults are....</h5>
+                            <h4 class="card-header" id="correctTotal"></h4>    
+                            <h4 class="card-header" id="wrongTotal"></h4>    
+                            <h4 class="card-header" id="unansweredTotal"></h4>    
+
+                    
+                        <button type="button" id="nextBtn" class="btn btn-outline-info btn-lg btn-block align-items-center">Play Again?</button> 
                     </div>
                     </div>
                 </div>

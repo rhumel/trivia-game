@@ -2,6 +2,7 @@ $(document).ready(function () {
 
 var correctTotal =0;
 var wrongTotal = 0;
+var incomplete = 0;
 var intervalId;
 var clockRunning = false;
 var countDownTimer = 30;
@@ -13,7 +14,7 @@ var triviaQuest = [{
       B: "Probosis",
       C: "Luggage",
       D: "Snoutus",
-      correct: "B",
+      correct: ["B","Probosis"],
       questImage: "./assets/images/elephant.jpg",
 },{
       question: "Which ape gets its name from the Maly word meaning",
@@ -21,7 +22,7 @@ var triviaQuest = [{
       B: "Chimpanzee",  
       C: "Orangutan",
       D: "Howler",
-      correct: "C",
+      correct: ["C", "Orangutan"],
       questImage: "./assets/images/Orangutan.jpg",
 },{
     question: "How is th domestic CAVY better known?",
@@ -29,7 +30,7 @@ var triviaQuest = [{
     B: "Mouse",
     C: "Beaver",
     D: "Rat",
-    correct: "A",
+    correct: ["A", "Guinea Pig"],
     questImage: "./assets/images/Guineapig.jpg",
 },{
     question: "What are the male honey bees called that are the only members of the colony allowed to to mate with the queen?",
@@ -37,7 +38,7 @@ var triviaQuest = [{
     B: "King",
     C: "Hornet",
     D: "Drone",
-    correct: "D",
+    correct: ["D", "Drone"],
     questImage: "./assets/images/Bee.jpg",
 },{    
     question: "What kind of animal is a karakul?",
@@ -45,7 +46,7 @@ var triviaQuest = [{
     B: "Sheep",
     C: "Lizard",
     D: "Horse",
-    correct: "B",
+    correct: ["B", "Sheep"],
     questImage: "./assets/images/sheep.jpg",
 },{
     question: "'Murder' is a collective noun for a group of of which bird?",
@@ -53,7 +54,7 @@ var triviaQuest = [{
     B: "Robin",
     C: "Cardinal",
     D: "Red Faced Warbler",
-    correct: "A",
+    correct: ["A", "Crow"],
     questImage: "./assets/images/crow.jpg",
 },{
     question: "What is a Cabbage White?",
@@ -61,7 +62,7 @@ var triviaQuest = [{
     B: "Finch",
     C: "Butterfly",
     D: "Snake",
-    correct: "C",
+    correct: ["C", "Butterfly"],
     questImage: "./assets/images/butterfly.jpg",
 },{
     question: "How many arms do most starfish have?",
@@ -69,7 +70,7 @@ var triviaQuest = [{
     B: "Seven",
     C: "Five",
     D: "Eight",
-    correct: "A",
+    correct: ["A","Six"],
     questImage: "./assets/images/starfish.jpg",
 },{ 
     question: "From which animal is mohair obtained?",
@@ -77,7 +78,7 @@ var triviaQuest = [{
     B: "Horse",
     C: "Sheep",
     D: "Goat",
-    correct: "D",
+    correct: ["D","Goat"],
     questImage: "./assets/images/Goat.jpg",
 },{
     question: "What kind of animal is a Flemish giant",
@@ -85,7 +86,7 @@ var triviaQuest = [{
     B: "Rabbit",
     C: "Beaver",
     D: "Cheetah",
-    correct: "B",
+    correct: ["B", "Rabbit"],
     questImage: "./assets/images/rabbit.jpg",
  }]
 
@@ -97,9 +98,10 @@ $(".answer").on("click",pickAnswer);
 
 
 function pickAnswer() {
-    console.log($(this).val())
-    console.log(triviaQuest[numQuestions].correct)
-    if ($(this).val() === triviaQuest[numQuestions].correct){
+  //  console.log($(this).val());
+  //  console.log($(".answer").val());
+  //  console.log(triviaQuest[numQuestions].correct)
+    if ($(this).val() === triviaQuest[numQuestions].correct[0]){
 
         console.log("win")
         win();
@@ -113,7 +115,12 @@ function pickAnswer() {
 
 
 function showQuestions() {
-    
+    // if (numQuestions===(triviaQuest.length-1)) {
+    //    endGame();
+    // }
+   console.log(numQuestions);
+   console.log(triviaQuest.length);
+   console.log(triviaQuest);
     numQuestions++
     countDownTimer = 30;
     
@@ -122,12 +129,13 @@ function showQuestions() {
         $("#questionPage").removeClass("hide").addClass("show");
         $("#questionCard").html(triviaQuest[numQuestions].question);
         $("#answerCard").removeClass("show").addClass("hide");       
+        $("#timeHeader").html("Time Remaining: " + countDownTimer);
         $("#btnA").html(triviaQuest[numQuestions].A);
         $("#btnB").html(triviaQuest[numQuestions].B);
         $("#btnC").html(triviaQuest[numQuestions].C);
         $("#btnD").html(triviaQuest[numQuestions].D);
 
-      console.log("start timer");
+      console.log("start timer:execute time from showQuestions function");
       startTimer();
    // }
 }
@@ -140,31 +148,26 @@ function showAnswer (message) {
     $("#answerCard").removeClass("hide").addClass("show");
     
     //display the answer
-    $("#answerText").html(message + " The Answer is: " + triviaQuest[numQuestions].correct);
 
+    $("#answerText").html(message + " The Answer is: " + triviaQuest[numQuestions].correct[0] + " - " +triviaQuest[numQuestions].correct[1]);
+    
     //display the pic
     $("#animalPic").attr("src",triviaQuest[numQuestions].questImage);
 
-    // if (numQuestions===triviaQuest.length){
-        //show totals page
-
-    // } else {
+    //Click on button to get to next question
+    
     $("#nextBtn").on("click",showQuestions);
-
-    // }
 }
-
-
-
-
-
 
 //start the timer for each question
 function startTimer () {
+    console.log("before the clear " + intervalId);
     clearInterval(intervalId);
-    console.log(countDownTimer + "just started timer");
-    intervalId = setInterval(countDown,1000);
- 
+    console.log("after the clear " + intervalId);
+    console.log(countDownTimer + "justabout to start timer");
+    intervalId = setInterval(countDown,1000); 
+    console.log("i'm back from running the countDown function");
+    
 };
 
 //countDown reduced by 1. if out of time show the answer page
@@ -172,7 +175,7 @@ function countDown () {
    console.log(countDownTimer + "this is how many seconds on the timer to start");
 
     if (countDownTimer === 0) {
-        //increase wrong answer tally
+       incomplete++; 
        lose();
      
     }else {
@@ -190,30 +193,29 @@ function lose () {
       
     //reset timer
     clearInterval(intervalId);
-    showAnswer("Incorrect");
+    showAnswer("Incorrect!! ");
+    
 }
 
 function win () {
 
     correctTotal++;
+    
+    //reset Timer
     clearInterval(intervalId);
-    showAnswer("Correct");
+    showAnswer("Correct!! ");
 
+}
+
+function endGame (){
+
+    $("#answerCard").removeClass("show").addClass("hide");       
+    $("#totalCard").removeClass("hide").addClass("show");       
+    $("#correctTotal").html("Correct answers: " + correctTotal);
+    $("#wrongTotal").html("Incorrect answers: " + wrongTotal);
+    $("#unansweredTotal").html("Unanswered questions: " + incomplete);    
 }
 
 });
 
-// var timeLeft = 30;
-// var elem = document.getElementById('some_div');
 
-// var timerId = setInterval(countdown, 1000);
-
-// function countdown() {
-//   if (timeLeft == 0) {
-//     clearTimeout(timerId);
-//     doSomething();
-//   } else {
-//     elem.innerHTML = timeLeft + ' seconds remaining';
-//     timeLeft--;
-//   }
-// }
