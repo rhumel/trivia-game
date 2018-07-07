@@ -4,7 +4,7 @@ var correctTotal =0;
 var wrongTotal = 0;
 var incomplete = 0;
 var intervalId;
-var clockRunning = false;
+//var clockRunning = false;
 var end = false;
 var countDownTimer = 30;
 var numQuestions= -1;
@@ -56,7 +56,7 @@ var triviaQuest = [{
     C: "Cardinal",
     D: "Red Faced Warbler",
     correct: ["A", "Crow"],
-    questImage: "./assets/images/crow.jpg",
+    questImage: "./assets/images/crows.jpg",
 },{
     question: "What is a Cabbage White?",
     A: "Moth",
@@ -99,6 +99,8 @@ $(".answer").on("click",pickAnswer);
 
 $("#nextBtn").on("click",showQuestions);
 
+$("#resetBtn").on("click",reset);
+
 function pickAnswer() {
  
     if ($(this).val() === triviaQuest[numQuestions].correct[0]){
@@ -122,9 +124,7 @@ function showQuestions() {
     numQuestions++
     countDownTimer = 30;
     
-    if (end===true){
-        endGame();
-    }
+    if (end===false){
     
          $("#startBtn").removeClass("show").addClass("hide");
         $("#questionPage").removeClass("hide").addClass("show");
@@ -138,8 +138,14 @@ function showQuestions() {
 
       console.log("start timer:execute time from showQuestions function");
       startTimer();
+
+    } else {
+        endGame();
+
+
+    }
    // }
-}
+    }
 
 function showAnswer (message) {
 
@@ -168,10 +174,10 @@ function showAnswer (message) {
 //start the timer for each question
 function startTimer () {
     console.log("before the clear " + intervalId);
- if (clockRunning===false) {
+// if (clockRunning===false) {
     clearInterval(intervalId);
     intervalId = setInterval(countDown,1000); 
- }
+// }
 
    
  //   console.log("after the clear " + intervalId);
@@ -183,7 +189,7 @@ function startTimer () {
 //countDown reduced by 1. if out of time show the answer page
 function countDown () {
    console.log(countDownTimer + "this is how many seconds on the timer to start");
-    clockRunning = true;
+    //clockRunning = true;
     if (countDownTimer === 0) {
        incomplete++; 
        lose();
@@ -200,7 +206,7 @@ function countDown () {
 function lose () {
 
     wrongTotal++;
-    clockRunning = false;  
+   // clockRunning = false;  
     //reset timer
     clearInterval(intervalId);
     showAnswer("Incorrect!! ");
@@ -210,7 +216,7 @@ function lose () {
 function win () {
 
     correctTotal++;
-    clockRunning = false;
+   // clockRunning = false;
     //reset Timer
     clearInterval(intervalId);
     showAnswer("Correct!! ");
@@ -218,13 +224,28 @@ function win () {
 }
 
 function endGame (){
-
+    //$("#questionCard").removeClass("show").addClass("hide");
     $("#questionPage").removeClass("show").addClass("hide");
     $("#answerCard").removeClass("show").addClass("hide");       
     $("#totalCard").removeClass("hide").addClass("show");       
     $("#correctTotal").html("Correct answers: " + correctTotal);
     $("#wrongTotal").html("Incorrect answers: " + wrongTotal);
     $("#unansweredTotal").html("Unanswered questions: " + incomplete);    
+}
+
+function reset (){
+    correctTotal =0;
+    wrongTotal = 0;
+    incomplete = 0;
+    intervalId;
+    end = false;
+    countDownTimer = 30;
+    numQuestions= -1;
+    
+    $("#totalCard").removeClass("show").addClass("hide"); 
+    $("#startBtn").removeClass("hide").addClass("show");
+
+//    showQuestions();
 }
 
 });
