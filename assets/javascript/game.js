@@ -4,7 +4,6 @@ $(document).ready(function () {
     var wrongTotal = 0;
     var incomplete = 0;
     var intervalId;
-    //var clockRunning = false;
     var end = false;
     var countDownTimer = 30;
     var numQuestions = -1;
@@ -115,12 +114,10 @@ $(document).ready(function () {
 
     }
 
-
+    // Display questions
     function showQuestions() {
 
-        // console.log(numQuestions);
-        // console.log(triviaQuest.length);
-        // console.log(triviaQuest);
+
         numQuestions++
         countDownTimer = 30;
 
@@ -169,8 +166,7 @@ $(document).ready(function () {
 
     //start the timer for each question
     function startTimer() {
-        //    console.log("before the clear " + intervalId);
-
+       
         clearInterval(intervalId);
         intervalId = setInterval(countDown, 1000);
 
