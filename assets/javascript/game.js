@@ -23,7 +23,7 @@ $(document).ready(function () {
         C: "Orangutan",
         D: "Howler",
         correct: ["C", "Orangutan"],
-        questImage: "./assets/images/Orangutan.jpg",
+        questImage: "./assets/images/orangutan.jpg",
     }, {
         question: "How is th domestic CAVY better known?",
         A: "Guinea Pig",
@@ -31,7 +31,7 @@ $(document).ready(function () {
         C: "Beaver",
         D: "Rat",
         correct: ["A", "Guinea Pig"],
-        questImage: "./assets/images/Guineapig.jpg",
+        questImage: "./assets/images/guineapig.jpg",
     }, {
         question: "What are the male honey bees called that are the only members of the colony allowed to to mate with the queen?",
         A: "Worker",
@@ -39,7 +39,7 @@ $(document).ready(function () {
         C: "Hornet",
         D: "Drone",
         correct: ["D", "Drone"],
-        questImage: "./assets/images/Bee.jpg",
+        questImage: "./assets/images/bee.jpg",
     }, {
         question: "What kind of animal is a karakul?",
         A: "Baboon",
